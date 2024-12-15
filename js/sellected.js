@@ -18,7 +18,7 @@ $(document).ready(function() {
 function Draw (){
     chosedProdcuts.map((item)=>{
         prodcuts.innerHTML +=
-        `
+        `<div class=" col-lg-6 col-md-12 p-3" >
            <div class="card mb-3 rounded bg-body-secondary rounded-5 border-0" >
                <div class="row g-0 px-4">
                  <div class="col-md-6 py-4 text-center">
@@ -37,6 +37,8 @@ function Draw (){
                  </div>
                </div>
            </div> 
+          </div> 
+
        `
     })
     }
@@ -109,9 +111,9 @@ function favDraw(){
               <img src="${item.image}" class="img-fluid rounded-start" alt="...">
             </div>
               <div class="card-body pt-4">
-                  <h6 class="card-title">Products : ${item.title}</h6>
+                  <h6 class="card-title text-nowrap overflow-hidden">Products :  ${item.title}</h6>
                   <div class="d-flex justify-content-between">
-                    <h6>Category : ${item.category}</h6>
+                    <h6 class="card-title text-nowrap overflow-hidden"style="width: 80%;"  >Category :  ${item.category}</h6>
                     <i onclick="favourite(${item.id})" class="fa-solid fa-heart text-danger fs-3"></i>
                 </div>
               </div>

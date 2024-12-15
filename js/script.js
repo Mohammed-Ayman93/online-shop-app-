@@ -172,10 +172,11 @@ let AllProdusct = [
 function Draw (){
      AllProdusct.map((item)=>{
         produsts.innerHTML += `
-            <div class="card h-100 p-2" >
+        <div class="p-3 col-sm-12 col-md-6 col-lg-4 " >
+            <div class="card h-100 p-2  " >
                 <img src="${item.image}" class="card-img-top p-2" alt="...">
                 <div class="p-2">
-                  <h6 class="card-title">Products : ${item.title}</h6>
+                  <h6 class="card-title text-nowrap overflow-hidden">Products : ${item.title}</h6>
                   <h6>Price : ${item.price} $</h6>
                   <h6>Category : ${item.category}</h6>
                   <div class="d-flex justify-content-between">
@@ -184,7 +185,8 @@ function Draw (){
                   </div>
                 </div>
               </div>
-        `
+
+                `
     })
 }
 Draw()
@@ -194,7 +196,7 @@ if(chosed){
     chosed.map((item)=>{
         List.innerHTML += ` 
         <div class="d-flex justify-content-between bg-light rounded p-2 mt-2 align-items-center">
-             <p class="text-primary m-0">${item.title}</p> <div><span id="prodcutCount${item.id}" class="text-primary">${item.count}</span> <i id="increase" onClick="Increase(${item.id})" class="fa-solid fa-plus text-success px-2"></i> <i id="decrease" onClick="Decrease(${item.id})" class="fa-solid fa-minus text-danger"></i></div>
+             <p class="text-primary m-0 text-wrap" style="width: 65%;">${item.title}</p> <div><span id="prodcutCount${item.id}" class="text-primary">${item.count}</span> <i id="increase" onClick="Increase(${item.id})" class="fa-solid fa-plus text-success px-2"></i> <i id="decrease" onClick="Decrease(${item.id})" class="fa-solid fa-minus text-danger"></i></div>
         </div>
         `  
         AllProdusct.map((prodcut)=>{
@@ -223,7 +225,7 @@ function addToCart(id){
             localStorage.setItem("chosed",choseen)
             List.innerHTML += ` 
                     <div class="d-flex justify-content-between bg-light rounded p-2 mt-2 align-items-center">
-                         <p class="text-primary m-0">${ChosenProdcuts.title}</p> <div><span id="prodcutCount${ChosenProdcuts.id}" class="text-primary">${ChosenProdcuts.count}</span> <i id="increase" onClick="Increase(${ChosenProdcuts.id})" class="fa-solid fa-plus text-success px-2"></i> <i id="decrease" onClick="Decrease(${ChosenProdcuts.id})" class="fa-solid fa-minus text-danger"></i></div>
+                         <p class="text-primary m-0 text-wrap" style="width: 65%;">${ChosenProdcuts.title}</p> <div><span id="prodcutCount${ChosenProdcuts.id}" class="text-primary">${ChosenProdcuts.count}</span> <i id="increase" onClick="Increase(${ChosenProdcuts.id})" class="fa-solid fa-plus text-success px-2"></i> <i id="decrease" onClick="Decrease(${ChosenProdcuts.id})" class="fa-solid fa-minus text-danger"></i></div>
                     </div>
             `
             let produtsNum = document.querySelectorAll(".prodcuts-list .d-flex")
@@ -357,10 +359,11 @@ search.onkeyup = function(){
     })
     fillterd.map((item)=>{
         produsts.innerHTML += `
-            <div class="card h-100 p-2" >
+        <div class="p-3 col-sm-12 col-md-6 col-lg-4 " >
+            <div class="card h-100 p-2  " >
                 <img src="${item.image}" class="card-img-top p-2" alt="...">
                 <div class="p-2">
-                  <h6 class="card-title">Products : ${item.title}</h6>
+                  <h6 class="card-title text-nowrap overflow-hidden">Products : ${item.title}</h6>
                   <h6>Price : ${item.price} $</h6>
                   <h6>Category : ${item.category}</h6>
                   <div class="d-flex justify-content-between">
@@ -378,10 +381,11 @@ search.onkeyup = function(){
     })
     fillterd.map((item)=>{
         produsts.innerHTML += `
-            <div class="card h-100 p-2" >
+        <div class="p-3 col-sm-12 col-md-6 col-lg-4 " >
+            <div class="card h-100 p-2  " >
                 <img src="${item.image}" class="card-img-top p-2" alt="...">
                 <div class="p-2">
-                  <h6 class="card-title">Products : ${item.title}</h6>
+                  <h6 class="card-title text-nowrap overflow-hidden">Products : ${item.title}</h6>
                   <h6>Price : ${item.price} $</h6>
                   <h6>Category : ${item.category}</h6>
                   <div class="d-flex justify-content-between">

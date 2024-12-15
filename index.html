@@ -14,18 +14,18 @@
     <nav class="navbar navbar-expand-lg bg-body-secondary py-4">
         <div class="container">
           <a class="navbar-brand text-primary fw-bold" href="index.html">Online Shopping</a>
+          <div class="navbar-nav m-auto w-50 mb-2 mb-lg-0">
+              <span id="userName" class="text-uppercase text-primary fw-medium m-auto d-none">welcome User Name</span>
+          </div>
           <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" >
-            <div class="navbar-nav m-auto mb-2 mb-lg-0">
-                <span id="userName" class="text-uppercase text-primary fw-medium d-none">welcome User Name</span>
-            </div>
-            <div class="login ">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="login ms-auto">
                 <a href="login.html">Login</a>
                 <a class="ms-4" href="register.html">Register</a>
             </div>
-            <div class="logedIn d-none">
+            <div class="logedIn ms-auto d-none">
                 <a id="cart" href="#"><i class="fa-solid fa-cart-shopping px-2"><span id="counter"></span></i>  Cart </a>   <i id="up_down" class="fa-solid fa-caret-down"></i>
                 <a class="ms-4" href="#" id="logout" >Logout</a>
                 <div class="prodcuts-list bg-body-secondary p-2 d-none" >
@@ -48,79 +48,8 @@
       </div>
       <!--/////////////////prodcuts////////////////////////  -->
       <div class="container w-75 mt-5">
-        <div class="prodcuts d-flex flex-wrap justify-content-between gap-2">
-            <!-- <div class="card h-100 p-2" >
-                <img src="Images/phons/514nSB8S9pL._AC_SX679_.jpg" class="card-img-top p-2" alt="...">
-                <div class="p-2">
-                  <h6 class="card-title">Products : Phone</h6>
-                  <h6>Price : 100 $</h6>
-                  <h6>Category : Phones</h6>
-                  <div class="d-flex justify-content-between">
-                    <button class="btn btn-primary">Add to cart</button>
-                    <a href="#"><i class="fa-solid fa-heart text-secondary fs-4"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="card h-100 p-2" >
-                <img src="Images/phons/514nSB8S9pL._AC_SX679_.jpg" class="card-img-top p-2" alt="...">
-                <div class="p-2">
-                  <h6 class="card-title">Products : Phone</h6>
-                  <h6>Price : 100 $</h6>
-                  <h6>Category : Phones</h6>
-                  <div class="d-flex justify-content-between">
-                    <button class="btn btn-primary">Add to cart</button>
-                    <a href="#"><i class="fa-solid fa-heart text-secondary fs-4"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="card h-100 p-2" >
-                <img src="Images/phons/514nSB8S9pL._AC_SX679_.jpg" class="card-img-top p-2" alt="...">
-                <div class="p-2">
-                  <h6 class="card-title">Products : Phone</h6>
-                  <h6>Price : 100 $</h6>
-                  <h6>Category : Phones</h6>
-                  <div class="d-flex justify-content-between">
-                    <button class="btn btn-primary">Add to cart</button>
-                    <a href="#"><i class="fa-solid fa-heart text-secondary fs-4"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="card h-100 p-2" >
-                <img src="Images/phons/514nSB8S9pL._AC_SX679_.jpg" class="card-img-top p-2" alt="...">
-                <div class="p-2">
-                  <h6 class="card-title">Products : Phone</h6>
-                  <h6>Price : 100 $</h6>
-                  <h6>Category : Phones</h6>
-                  <div class="d-flex justify-content-between">
-                    <button class="btn btn-primary">Add to cart</button>
-                    <a href="#"><i class="fa-solid fa-heart text-secondary fs-4"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="card h-100 p-2" >
-                <img src="Images/phons/514nSB8S9pL._AC_SX679_.jpg" class="card-img-top p-2" alt="...">
-                <div class="p-2">
-                  <h6 class="card-title">Products : Phone</h6>
-                  <h6>Price : 100 $</h6>
-                  <h6>Category : Phones</h6>
-                  <div class="d-flex justify-content-between">
-                    <button class="btn btn-primary">Add to cart</button>
-                    <a href="#"><i class="fa-solid fa-heart text-secondary fs-4"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="card h-100 p-2" >
-                <img src="Images/phons/514nSB8S9pL._AC_SX679_.jpg" class="card-img-top p-2" alt="...">
-                <div class="p-2">
-                  <h6 class="card-title">Products : Phone</h6>
-                  <h6>Price : 100 $</h6>
-                  <h6>Category : Phones</h6>
-                  <div class="d-flex justify-content-between">
-                    <button class="btn btn-primary">Add to cart</button>
-                    <a href="#"><i class="fa-solid fa-heart text-secondary fs-4"></i></a>
-                  </div>
-                </div>
-              </div> -->
+        <div class="prodcuts row">
+           
         </div>
           
       </div>

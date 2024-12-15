@@ -13,7 +13,7 @@ a{
     bottom: -5px;
 }
 .prodcuts .card{
-    width: 32% ;
+    /* width: 32% ; */
     transition: .5s;
 }
 .prodcuts .card img{
