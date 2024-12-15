@@ -1,0 +1,39 @@
+.prodcuts .card img{
+    height: 150px;
+}
+.prodcuts h6{
+    padding-bottom: 10px;
+}
+.prodcuts .card{
+    width: 48%;
+}
+a{
+    text-decoration: none;
+}
+.prodcuts i{
+    cursor: pointer;
+}
+#owl-demo .item{
+    margin: 3px;
+  }
+.card img{
+    height: 200px;
+}
+.card{
+    margin-left: 20px;
+}
+.card:hover{
+    border: 1px solid red;
+}
+.under-line{
+    width: 5%;
+    height: 3px;
+    border-radius: 10px;
+    transition: .5s;
+}
+.title:hover + .under-line{
+    width: 10%;
+}
+.fav-prodcuts i{
+    cursor: pointer;
+}

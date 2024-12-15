@@ -1,0 +1,52 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+}
+a{
+    text-decoration: none;
+}
+.logedIn a i{
+    position: relative;
+}
+.logedIn a i span{
+    position: absolute;
+    font-size: 10px;
+    bottom: -5px;
+}
+.prodcuts .card{
+    width: 32% ;
+    transition: .5s;
+}
+.prodcuts .card img{
+    height: 250px;
+}
+.card:hover{
+    border: 1px solid rgb(0, 140, 255);
+    transform: translateY(-5px);
+}
+.logedIn{
+    position: relative;
+}
+.prodcuts-list{
+    position: absolute;
+    top: 55px;
+    width: 250px;
+    right: 55px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    z-index: 1;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+/* .prodcuts-list div{
+    line-height: 30px;
+    height: 40px;
+} */
+.prodcuts-list i{
+    cursor: pointer;
+}
+#up_down{
+    font-size: 14px;
+    color: rgb(13 110 253);
+}
+.fa-heart{
+    cursor: pointer;
+}
