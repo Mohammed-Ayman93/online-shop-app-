@@ -350,7 +350,7 @@ logout.onclick = function(e){
     localStorage.clear()
     window.location = "index.html"
 }
-// //////////////////////// Seach function //////////////////////////
+// //////////////////////// Search function //////////////////////////
 search.onkeyup = function(){
     produsts.innerHTML = "";
     if(searchSelect.value == "name"){
@@ -358,6 +358,20 @@ search.onkeyup = function(){
         return item.title.toLowerCase().includes(search.value.toLowerCase())
     })
     fillterd.map((item)=>{
+        let btnName = "Add to cart";
+        let btnColor = "btn-primary";
+        let heartColor = "text-secondary"
+            chosed.map((prodcut)=>{
+            if(item.id == prodcut.id){
+                btnName = "Remove from cart";
+                btnColor = "btn-danger";
+            }
+        })
+        Fav.map((prodcut)=>{
+            if(item.id == prodcut.id){
+                heartColor = "text-danger"
+            }
+        })
         produsts.innerHTML += `
         <div class="p-3 col-sm-12 col-md-6 col-lg-4 " >
             <div class="card h-100 p-2  " >
@@ -367,8 +381,8 @@ search.onkeyup = function(){
                   <h6>Price : ${item.price} $</h6>
                   <h6>Category : ${item.category}</h6>
                   <div class="d-flex justify-content-between">
-                    <button onclick="addToCart(${item.id})" class="btn btn-primary">Add to cart</button>
-                    <i onclick="addToFav(${item.id})" class="fa-solid fa-heart text-secondary fs-4"></i>
+                    <button onclick="addToCart(${item.id})" class="btn ${btnColor}">${btnName}</button>
+                    <i onclick="addToFav(${item.id})" class="fa-solid fa-heart ${heartColor} fs-4"></i>
                   </div>
                 </div>
               </div>
@@ -380,6 +394,20 @@ search.onkeyup = function(){
         return item.category.toLowerCase().includes(search.value.toLowerCase())
     })
     fillterd.map((item)=>{
+        let btnName = "Add to cart";
+        let btnColor = "btn-primary";
+        let heartColor = "text-secondary"
+            chosed.map((prodcut)=>{
+            if(item.id == prodcut.id){
+                btnName = "Remove from cart";
+                btnColor = "btn-danger";
+            }
+        })
+        Fav.map((prodcut)=>{
+            if(item.id == prodcut.id){
+                heartColor = "text-danger"
+            }
+        })
         produsts.innerHTML += `
         <div class="p-3 col-sm-12 col-md-6 col-lg-4 " >
             <div class="card h-100 p-2  " >
@@ -389,12 +417,13 @@ search.onkeyup = function(){
                   <h6>Price : ${item.price} $</h6>
                   <h6>Category : ${item.category}</h6>
                   <div class="d-flex justify-content-between">
-                    <button onclick="addToCart(${item.id})" class="btn btn-primary">Add to cart</button>
-                    <i onclick="addToFav(${item.id})" class="fa-solid fa-heart text-secondary fs-4"></i>
+                    <button onclick="addToCart(${item.id})" class="btn ${btnColor}">${btnName}</button>
+                    <i onclick="addToFav(${item.id})" class="fa-solid fa-heart ${heartColor} fs-4"></i>
                   </div>
                 </div>
               </div>
         `
     })
     }
+
 }
