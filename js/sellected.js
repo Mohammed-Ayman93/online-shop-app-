@@ -3,6 +3,7 @@ let chosedProdcuts = JSON.parse(localStorage.getItem("chosed"))
 let favProdcuts = JSON.parse(localStorage.getItem("Favorite"))
 let logout = document.getElementById("logout")
 let totalPriceDiv = document.getElementById("total-price")
+let userCart = document.getElementById("userCart")
 let favProdcutsDiv = document.querySelector(".fav-prodcuts")
 
 // ///////////////////owl carousel ////////////////////
@@ -14,6 +15,7 @@ $(document).ready(function() {
     itemsDesktopSmall : [979,3]
     });
 });
+userCart.innerHTML = localStorage.getItem("firstName")
 ////////////////////////// Draw sellected prodcuts function //////////////
 function Draw (){
     chosedProdcuts.map((item)=>{

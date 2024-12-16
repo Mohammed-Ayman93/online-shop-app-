@@ -1,3 +1,7 @@
+body{
+    background-color: #a5a3a3;
+
+}
 .prodcuts .card img{
     height: 150px;
 }
@@ -33,4 +37,7 @@ a{
 }
 .fav-prodcuts i{
     cursor: pointer;
+}
+#userCart{
+    line-height: 90px;
 }

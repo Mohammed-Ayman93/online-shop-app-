@@ -11,6 +11,10 @@ let searchSelect = document.getElementById("search-select")
 let search = document.getElementById("search")
 let produtsList = document.querySelector(".prodcuts-list")
 let List = document.querySelector(".prodcuts-list div")
+let fillterd = []
+let chosed = (localStorage.getItem("chosed")) ? JSON.parse(localStorage.getItem("chosed")) : [];
+let Fav = (localStorage.getItem("Favorite")) ? JSON.parse(localStorage.getItem("Favorite")) : [];
+
 ///////////////////////////////////////////////////
 
 /////////////////////////// Show UserName /////////////////////
@@ -171,6 +175,20 @@ let AllProdusct = [
 //////////////////////////////// Drawing Prodcuts in HTML //////////////////
 function Draw (){
      AllProdusct.map((item)=>{
+        let btnName = "Add to cart";
+        let btnColor = "btn-primary";
+        let heartColor = "text-secondary";
+        chosed.map((prodcut)=>{
+            if(item.id == prodcut.id){
+                btnName = "Remove from cart";
+                btnColor = "btn-danger";
+            }
+        })
+        Fav.map((prodcut)=>{
+            if(item.id == prodcut.id){
+                heartColor = "text-danger";
+            }
+        })
         produsts.innerHTML += `
         <div class="p-3 col-sm-12 col-md-6 col-lg-4 " >
             <div class="card h-100 p-2  " >
@@ -180,18 +198,100 @@ function Draw (){
                   <h6>Price : ${item.price} $</h6>
                   <h6>Category : ${item.category}</h6>
                   <div class="d-flex justify-content-between">
-                    <button onclick="addToCart(${item.id})" class="btn btn-primary">Add to cart</button>
-                    <i onclick="addToFav(${item.id})" class="fa-solid fa-heart text-secondary fs-4"></i>
+                    <button onclick="addToCart(${item.id})" class="btn ${btnColor}">${btnName}</button>
+                    <i onclick="addToFav(${item.id})" class="fa-solid fa-heart ${heartColor} fs-4"></i>
                   </div>
                 </div>
               </div>
-
                 `
     })
 }
 Draw()
+
+// //////////////////////// Search function //////////////////////////
+searchSelect.onchange = function(){
+    if(searchSelect.value == "name"){
+        search.setAttribute("placeholder","Search By Name")
+    }else{
+        search.setAttribute("placeholder","Search By Category")
+    }
+}
+search.onkeyup = function(){
+    produsts.innerHTML = "";
+    if(searchSelect.value == "name"){
+        fillterd = AllProdusct.filter((item)=>{
+            return item.title.toLowerCase().includes(search.value.toLowerCase())
+        })
+
+    fillterd.map((item)=>{
+        let btnName = "Add to cart";
+        let btnColor = "btn-primary";
+        let heartColor = "text-secondary";
+            chosed.map((prodcut)=>{
+            if(item.id == prodcut.id){
+                btnName = "Remove from cart";
+                btnColor = "btn-danger";
+            }
+        })
+    Fav.map((prodcut)=>{
+            if(item.id == prodcut.id){
+                heartColor = "text-danger"
+            }
+        })
+        produsts.innerHTML += `
+          <div class="p-3 col-sm-12 col-md-6 col-lg-4 " >
+            <div class="card h-100 p-2  " >
+                <img src="${item.image}" class="card-img-top p-2" alt="...">
+                <div class="p-2">
+                  <h6 class="card-title text-nowrap overflow-hidden">Products : ${item.title}</h6>
+                  <h6>Price : ${item.price} $</h6>
+                  <h6>Category : ${item.category}</h6>
+                  <div class="d-flex justify-content-between">
+                    <button onclick="addToCart(${item.id})" class="btn ${btnColor}">${btnName}</button>
+                    <i onclick="addToFav(${item.id})" class="fa-solid fa-heart ${heartColor} fs-4"></i>
+                  </div>
+                </div>
+              </div>
+        `
+    })
+    }else{
+    fillterd = AllProdusct.filter((item)=>{
+        return item.category.toLowerCase().includes(search.value.toLowerCase())
+    })
+        fillterd.map((item)=>{
+            let btnName = "Add to cart";
+            let btnColor = "btn-primary";
+            let heartColor = "text-secondary";
+            chosed.map((prodcut)=>{
+            if(item.id == prodcut.id){
+                btnName = "Remove from cart";
+                btnColor = "btn-danger";
+            }
+        })
+        Fav.map((prodcut)=>{
+            if(item.id == prodcut.id){
+                heartColor = "text-danger"
+            }
+        })
+        produsts.innerHTML += `
+          <div class="p-3 col-sm-12 col-md-6 col-lg-4 " >
+            <div class="card h-100 p-2  " >
+                <img src="${item.image}" class="card-img-top p-2" alt="...">
+                <div class="p-2">
+                  <h6 class="card-title text-nowrap overflow-hidden">Products : ${item.title}</h6>
+                  <h6>Price : ${item.price} $</h6>
+                  <h6>Category : ${item.category}</h6>
+                  <div class="d-flex justify-content-between">
+                    <button onclick="addToCart(${item.id})" class="btn ${btnColor}">${btnName}</button>
+                    <i onclick="addToFav(${item.id})" class="fa-solid fa-heart ${heartColor} fs-4"></i>
+                  </div>
+                </div>
+              </div>
+        `
+    })
+    }
+}
 ///////////////////////////// Add to cart function //////////////////////
-let chosed = (localStorage.getItem("chosed")) ? JSON.parse(localStorage.getItem("chosed")) : [];
 if(chosed){
     chosed.map((item)=>{
         List.innerHTML += ` 
@@ -211,12 +311,17 @@ if(chosed){
 }
 let count = 1;
 function addToCart(id){
+    let itemIndex = id-1
+    if(fillterd.length > 0){
+        itemIndex = fillterd.findIndex((item)=>{
+        return item.id == id
+    })}
     if(userName.classList.contains("d-none")){
         window.location = "login.html"
     }else{
-        if(produsts.getElementsByTagName("button")[id-1].innerHTML == "Add to cart"){
-            produsts.getElementsByTagName("button")[id-1].innerHTML = "Remove from cart";
-            produsts.getElementsByTagName("button")[id-1].classList.replace("btn-primary" , "btn-danger");
+        if(produsts.getElementsByTagName("button")[itemIndex].innerHTML == "Add to cart"){
+            produsts.getElementsByTagName("button")[itemIndex].innerHTML = "Remove from cart";
+            produsts.getElementsByTagName("button")[itemIndex].classList.replace("btn-primary" , "btn-danger");
             let ChosenProdcuts = AllProdusct.find((item)=>{
                 return item.id == id
             });
@@ -231,8 +336,8 @@ function addToCart(id){
             let produtsNum = document.querySelectorAll(".prodcuts-list .d-flex")
             counter.innerHTML = produtsNum.length
         }else{
-            produsts.getElementsByTagName("button")[id-1].innerHTML = "Add to cart";
-            produsts.getElementsByTagName("button")[id-1].classList.replace("btn-danger" , "btn-primary");
+            produsts.getElementsByTagName("button")[itemIndex].innerHTML = "Add to cart";
+            produsts.getElementsByTagName("button")[itemIndex].classList.replace("btn-danger" , "btn-primary");
             let ChosenProdcuts = AllProdusct.find((item)=>{
                 return item.id == id
             });
@@ -259,7 +364,6 @@ function addToCart(id){
 }
 ///////////////////////////// Favourite function //////////////////////
 
-let Fav = (localStorage.getItem("Favorite")) ? JSON.parse(localStorage.getItem("Favorite")) : [];
 if(Fav){
     Fav.map((item)=>{
         AllProdusct.map((produst)=>{
@@ -270,12 +374,17 @@ if(Fav){
     })
 }
 function addToFav(id){
+    let itemIndex = id-1
+    if(fillterd.length > 0){
+        itemIndex = fillterd.findIndex((item)=>{
+        return item.id == id
+    })}
     if(userName.classList.contains("d-none")){
         window.location = "login.html"
         console.log("done")
     }else{
-        if(produsts.getElementsByClassName("fa-heart")[id-1].classList.contains("text-secondary")){
-            produsts.getElementsByClassName("fa-heart")[id-1].classList.replace("text-secondary" , "text-danger")
+        if(produsts.getElementsByClassName("fa-heart")[itemIndex].classList.contains("text-secondary")){
+            produsts.getElementsByClassName("fa-heart")[itemIndex].classList.replace("text-secondary" , "text-danger")
             let FavProdcuts = AllProdusct.find((item)=>{
                 return item.id == id
             });
@@ -283,7 +392,7 @@ function addToFav(id){
             let Favorite = JSON.stringify(Fav)
             localStorage.setItem("Favorite",Favorite)
         }else{
-            produsts.getElementsByClassName("fa-heart")[id-1].classList.replace( "text-danger" , "text-secondary")
+            produsts.getElementsByClassName("fa-heart")[itemIndex].classList.replace( "text-danger" , "text-secondary")
             let indexDelet = Fav.findIndex((index)=>{
                 return index.id == id
             })
@@ -349,81 +458,4 @@ logout.onclick = function(e){
     e.preventDefault()
     localStorage.clear()
     window.location = "index.html"
-}
-// //////////////////////// Search function //////////////////////////
-search.onkeyup = function(){
-    produsts.innerHTML = "";
-    if(searchSelect.value == "name"){
-    fillterd = AllProdusct.filter((item)=>{
-        return item.title.toLowerCase().includes(search.value.toLowerCase())
-    })
-    fillterd.map((item)=>{
-        let btnName = "Add to cart";
-        let btnColor = "btn-primary";
-        let heartColor = "text-secondary"
-            chosed.map((prodcut)=>{
-            if(item.id == prodcut.id){
-                btnName = "Remove from cart";
-                btnColor = "btn-danger";
-            }
-        })
-        Fav.map((prodcut)=>{
-            if(item.id == prodcut.id){
-                heartColor = "text-danger"
-            }
-        })
-        produsts.innerHTML += `
-        <div class="p-3 col-sm-12 col-md-6 col-lg-4 " >
-            <div class="card h-100 p-2  " >
-                <img src="${item.image}" class="card-img-top p-2" alt="...">
-                <div class="p-2">
-                  <h6 class="card-title text-nowrap overflow-hidden">Products : ${item.title}</h6>
-                  <h6>Price : ${item.price} $</h6>
-                  <h6>Category : ${item.category}</h6>
-                  <div class="d-flex justify-content-between">
-                    <button onclick="addToCart(${item.id})" class="btn ${btnColor}">${btnName}</button>
-                    <i onclick="addToFav(${item.id})" class="fa-solid fa-heart ${heartColor} fs-4"></i>
-                  </div>
-                </div>
-              </div>
-        `
-    })
-    }else{
-        
-    fillterd = AllProdusct.filter((item)=>{
-        return item.category.toLowerCase().includes(search.value.toLowerCase())
-    })
-    fillterd.map((item)=>{
-        let btnName = "Add to cart";
-        let btnColor = "btn-primary";
-        let heartColor = "text-secondary"
-            chosed.map((prodcut)=>{
-            if(item.id == prodcut.id){
-                btnName = "Remove from cart";
-                btnColor = "btn-danger";
-            }
-        })
-        Fav.map((prodcut)=>{
-            if(item.id == prodcut.id){
-                heartColor = "text-danger"
-            }
-        })
-        produsts.innerHTML += `
-        <div class="p-3 col-sm-12 col-md-6 col-lg-4 " >
-            <div class="card h-100 p-2  " >
-                <img src="${item.image}" class="card-img-top p-2" alt="...">
-                <div class="p-2">
-                  <h6 class="card-title text-nowrap overflow-hidden">Products : ${item.title}</h6>
-                  <h6>Price : ${item.price} $</h6>
-                  <h6>Category : ${item.category}</h6>
-                  <div class="d-flex justify-content-between">
-                    <button onclick="addToCart(${item.id})" class="btn ${btnColor}">${btnName}</button>
-                    <i onclick="addToFav(${item.id})" class="fa-solid fa-heart ${heartColor} fs-4"></i>
-                  </div>
-                </div>
-              </div>
-        `
-    })
-    }
-
 }

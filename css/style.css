@@ -1,8 +1,14 @@
 body{
     font-family: 'Times New Roman', Times, serif;
+    background-color: #a5a3a3;
 }
 a{
     text-decoration: none;
+}
+.navbar-nav{
+    line-height: 90px;
+    width: 70%;
+    color: #39b4ff;
 }
 .logedIn a i{
     position: relative;
@@ -17,6 +23,11 @@ a{
 }
 .prodcuts .card img{
     height: 250px;
+    border-radius: 40px;
+}
+.card{
+    border: 1px solid rgb(70, 70, 70);
+    background-color:rgba(250,250,250,.75)
 }
 .card:hover{
     border: 1px solid rgb(0, 140, 255);
