@@ -62,6 +62,10 @@ a{
 @media (max-width:768px){
     #userName{
         font-size: 16px !important;
-        /* line-height: 30px; */
+    }
+}
+@media (max-width:576px){
+    #userName ,.aa{
+        line-height: 30px;
     }
 }
