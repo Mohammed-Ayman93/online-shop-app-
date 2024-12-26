@@ -18,31 +18,33 @@ $(document).ready(function() {
 userCart.innerHTML = localStorage.getItem("firstName")
 ////////////////////////// Draw sellected prodcuts function //////////////
 function Draw (){
+  if(localStorage.getItem("chosed")){
     chosedProdcuts.map((item)=>{
-        prodcuts.innerHTML +=
-        `<div class=" col-lg-6 col-md-12 p-3" >
-           <div class="card mb-3 rounded bg-body-secondary rounded-5 border-0" >
-               <div class="row g-0 px-4">
-                 <div class="col-md-6 py-4 text-center">
-                   <img src="${item.image}" class="img-fluid rounded-start" alt="...">
-                 </div>
-                 <div class="col-md-6 py-4">
-                   <div class="card-body h-100 p-0">
-                       <h6 class="card-title">Products : ${item.title}</h6>
-                       <h6>Category : ${item.category}</h6>
-                       <h6>Price : ${item.price} $</h6>
-                       <div class="d-flex justify-content-between">
-                       <div class="fs-4"><span id="prodcutCount${item.id}" class="">${item.count}</span> <i  onclick="Increase(${item.id})" class="fa-solid fa-plus text-success px-2"></i> <i onclick="Decrease(${item.id})" class="fa-solid fa-minus text-danger"></i></div>
-                       <button onclick="RemoveFromCart(${item.id})" class="btn btn-danger">Remove</button>
-                       </div>
-                   </div>
+      prodcuts.innerHTML +=
+      `<div class=" col-lg-6 col-md-12 p-3" >
+         <div class="card mb-3 rounded bg-body-secondary rounded-5 border-0" >
+             <div class="row g-0 px-4">
+               <div class="col-md-6 py-4 text-center">
+                 <img src="${item.image}" class="img-fluid rounded-start" alt="...">
+               </div>
+               <div class="col-md-6 py-4">
+                 <div class="card-body h-100 p-0">
+                     <h6 class="card-title">Products : ${item.title}</h6>
+                     <h6>Category : ${item.category}</h6>
+                     <h6>Price : ${item.price} $</h6>
+                     <div class="d-flex justify-content-between">
+                     <div class="fs-4"><span id="prodcutCount${item.id}" class="">${item.count}</span> <i  onclick="Increase(${item.id})" class="fa-solid fa-plus text-success px-2"></i> <i onclick="Decrease(${item.id})" class="fa-solid fa-minus text-danger"></i></div>
+                     <button onclick="RemoveFromCart(${item.id})" class="btn btn-danger">Remove</button>
+                     </div>
                  </div>
                </div>
-           </div> 
-          </div> 
+             </div>
+         </div> 
+        </div> 
 
-       `
-    })
+     `
+  })
+  }
     }
 Draw()
 // ///////////////////// Delet prodcuts function ////////////////////
@@ -95,34 +97,38 @@ function Decrease(id) {
 }
 // ////////////////// Total price function ////////////////////////
 function totalPrice(){
-  let finallPrice = 0
-  chosedProdcuts.map((item)=>{
-    let Total = item.price * item.count
-    finallPrice = finallPrice + Total
-    totalPriceDiv.innerHTML = finallPrice
-  })
+  if(localStorage.getItem("chosed")){
+    let finallPrice = 0
+    chosedProdcuts.map((item)=>{
+      let Total = item.price * item.count
+      finallPrice = finallPrice + Total
+      totalPriceDiv.innerHTML = finallPrice
+    })
+  }
 }
 totalPrice()
 // ////////////////// Fav Draw Function ////////////////////////////
 function favDraw(){
-  favProdcuts.map((item)=>{
-    favProdcutsDiv.innerHTML += `
-            <div class="item fav">
-          <div class="card bg-body-secondary p-4 rounded-5">
-            <div class="text-center">
-              <img src="${item.image}" class="img-fluid rounded-start" alt="...">
-            </div>
-              <div class="card-body pt-4">
-                  <h6 class="card-title text-nowrap overflow-hidden">Products :  ${item.title}</h6>
-                  <div class="d-flex justify-content-between">
-                    <h6 class="card-title text-nowrap overflow-hidden"style="width: 80%;"  >Category :  ${item.category}</h6>
-                    <i onclick="favourite(${item.id})" class="fa-solid fa-heart text-danger fs-3"></i>
+  if(localStorage.getItem("Favorite")){
+    favProdcuts.map((item)=>{
+      favProdcutsDiv.innerHTML += `
+              <div class="item fav">
+            <div class="card bg-body-secondary p-4 rounded-5">
+              <div class="text-center">
+                <img src="${item.image}" class="img-fluid rounded-start" alt="...">
+              </div>
+                <div class="card-body pt-4">
+                    <h6 class="card-title text-nowrap overflow-hidden">Products :  ${item.title}</h6>
+                    <div class="d-flex justify-content-between">
+                      <h6 class="card-title text-nowrap overflow-hidden"style="width: 80%;"  >Category :  ${item.category}</h6>
+                      <i onclick="favourite(${item.id})" class="fa-solid fa-heart text-danger fs-3"></i>
+                  </div>
                 </div>
               </div>
-            </div>
-        </div>    
-    `
-  })
+          </div>    
+      `
+    })
+  }
 }
 favDraw()
 // //////////////// Unfavourite prodcut function //////////////////
