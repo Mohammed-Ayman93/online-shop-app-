@@ -41,3 +41,10 @@ a{
 #userCart{
     line-height: 90px;
 }
+
+
+@media (max-width:576px){
+    #userName {
+        font-size: 20px !important;
+    }
+}
