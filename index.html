@@ -11,21 +11,18 @@
 <body>
 
     <!--/////////////////////nav/////////////////////// -->
-    <nav class="navbar navbar-expand-lg bg-body-secondary">
-        <div class="container">
-          <a class="navbar-brand " href="index.html"> <img width="80px" src="Images/logo/logo.png" alt=""> </a>
-          <div class="navbar-nav m-auto mb-2 mb-lg-0">
-              <span id="userName" class="text-uppercase fs-3 fw-medium m-auto">welcome</span>
+    <nav class="navbar navbar-expand bg-body-secondary justify-content-center">
+        <div class="container row ">
+          <a class="navbar-brand col-lg-2 col-2 " href="index.html"> <img width="80px" src="Images/logo/logo.png" alt=""> </a>
+          <div class="navbar-nav m-auto mb-2 mb-lg-0 col-6 text-center col-lg-8 ">
+              <span id="userName" class="text-uppercase fs-3 fw-medium m-auto">welcome to ONLINE SHOP</span>
           </div>
-          <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="login ms-auto">
-                <a href="login.html">Login</a>
-                <a class="ms-4" href="register.html">Register</a>
+          <div class="col-lg-2 col-4" >
+            <div class="login  text-center">
+              <span><a href="login.html">Login</a></span>
+              <span class="ps-4"><a href="register.html">Register</a></span>
             </div>
-            <div class="logedIn ms-auto d-none">
+            <div class="logedIn d-none">
                 <a id="cart" href="#"><i class="fa-solid fa-cart-shopping px-2"><span id="counter"></span></i>  Cart </a>   <i id="up_down" class="fa-solid fa-caret-down"></i>
                 <a class="ms-4" href="#" id="logout" >Logout</a>
                 <div class="prodcuts-list bg-body-secondary p-2 d-none" >

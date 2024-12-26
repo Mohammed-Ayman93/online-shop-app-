@@ -14,7 +14,6 @@ let List = document.querySelector(".prodcuts-list div")
 let fillterd = []
 let chosed = (localStorage.getItem("chosed")) ? JSON.parse(localStorage.getItem("chosed")) : [];
 let Fav = (localStorage.getItem("Favorite")) ? JSON.parse(localStorage.getItem("Favorite")) : [];
-
 ///////////////////////////////////////////////////
 
 /////////////////////////// Show UserName /////////////////////
@@ -207,7 +206,6 @@ function Draw (){
     })
 }
 Draw()
-
 // //////////////////////// Search function //////////////////////////
 searchSelect.onchange = function(){
     if(searchSelect.value == "name"){
@@ -222,7 +220,6 @@ search.onkeyup = function(){
         fillterd = AllProdusct.filter((item)=>{
             return item.title.toLowerCase().includes(search.value.toLowerCase())
         })
-
     fillterd.map((item)=>{
         let btnName = "Add to cart";
         let btnColor = "btn-primary";
@@ -316,7 +313,7 @@ function addToCart(id){
         itemIndex = fillterd.findIndex((item)=>{
         return item.id == id
     })}
-    if(userName.classList.contains("d-none")){
+    if(logedIn.classList.contains("d-none")){
         window.location = "login.html"
     }else{
         if(produsts.getElementsByTagName("button")[itemIndex].innerHTML == "Add to cart"){
@@ -379,9 +376,8 @@ function addToFav(id){
         itemIndex = fillterd.findIndex((item)=>{
         return item.id == id
     })}
-    if(userName.classList.contains("d-none")){
+    if(logedIn.classList.contains("d-none")){
         window.location = "login.html"
-        console.log("done")
     }else{
         if(produsts.getElementsByClassName("fa-heart")[itemIndex].classList.contains("text-secondary")){
             produsts.getElementsByClassName("fa-heart")[itemIndex].classList.replace("text-secondary" , "text-danger")
@@ -399,10 +395,8 @@ function addToFav(id){
             Fav.splice(indexDelet,1)
             let NewFav = JSON.stringify(Fav)
             localStorage.setItem("Favorite",NewFav)
-    
         }
     }
-    
 }
 ///////////////////////////// prodcuts list show-hide //////////////////////
 
@@ -453,7 +447,6 @@ function Decrease(id) {
     }
 }
 ///////////////////////////// logout function //////////////////////
-
 logout.onclick = function(e){
     e.preventDefault()
     localStorage.clear()

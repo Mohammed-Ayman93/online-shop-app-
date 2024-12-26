@@ -1,13 +1,12 @@
 body{
     font-family: 'Times New Roman', Times, serif;
-    background-color: #a5a3a3;
+    background-color: #cdc7c7;
 }
 a{
     text-decoration: none;
 }
 .navbar-nav{
     line-height: 90px;
-    width: 70%;
     color: #39b4ff;
 }
 .logedIn a i{
@@ -55,4 +54,14 @@ a{
 }
 .fa-heart{
     cursor: pointer;
+}
+
+
+
+
+@media (max-width:768px){
+    #userName{
+        font-size: 16px !important;
+        /* line-height: 30px; */
+    }
 }
